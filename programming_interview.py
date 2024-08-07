@@ -72,9 +72,6 @@ class Interview:
             self.value = value
             self.next = next
 
-    def __init__(self):
-        pass
-
     def _factorial_recursive(self, n):
         if n == 0:
             return 1
