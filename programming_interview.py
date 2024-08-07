@@ -18,7 +18,7 @@ class Interview:
         elapsed_time = end_time - start_time
 
         # Print complexity and runtime
-        print("Recursive Factorial - Time Complexity: O(n), Space Complexity: O(n)")
+        print("Recursive Factorial - Time Complexity: O(n)")
         print(f"Runtime: {elapsed_time:.6f} seconds")
         return result
 
@@ -39,7 +39,7 @@ class Interview:
         elapsed_time = end_time - start_time
 
         # Print complexity and runtime
-        print("Iterative Factorial - Time Complexity: O(n), Space Complexity: O(1)")
+        print("Iterative Factorial - Time Complexity: O(n)")
         print(f"Runtime: {elapsed_time:.6f} seconds")
         return result
 
@@ -53,7 +53,7 @@ class Interview:
         elapsed_time = end_time - start_time
 
         # Print complexity and runtime
-        print("Divide and Conquer Factorial - Time Complexity: O(n log n), Space Complexity: O(log n)")
+        print("Divide and Conquer Factorial - Time Complexity: O(n log n)")
         print(f"Runtime: {elapsed_time:.6f} seconds")
         return result
 
@@ -76,7 +76,7 @@ class Interview:
         elapsed_time = end_time - start_time
 
         # Print complexity and runtime
-        print("Built-in Factorial - Time Complexity: O(n), Space Complexity: O(1)")
+        print("Built-in Factorial - Time Complexity: O(n)")
         print(f"Runtime: {elapsed_time:.6f} seconds")
         return result
 
