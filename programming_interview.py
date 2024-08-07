@@ -72,6 +72,7 @@ class Interview:
             self.value = value
             self.next = next
 
+    # Protected methods for factorial calculation
     def _factorial_recursive(self, n):
         if n == 0:
             return 1
