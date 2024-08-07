@@ -1,5 +1,7 @@
 from rich import print as rprint
 from rich.console import Console
+from rich.panel import Panel
+from rich.text import Text
 
 import math
 import time
@@ -264,37 +266,27 @@ interview = Interview()
 
 # Factorial examples
 console.rule("Factorial Examples")
-rprint("[bold cyan]Recursive Factorial - Time Complexity: O(n)[/bold cyan]")
-rprint(interview.factorial_recursive(5))  # Output: 120
-rprint("[bold cyan]Iterative Factorial - Time Complexity: O(n)[/bold cyan]")
-rprint(interview.factorial_iterative(5))  # Output: 120
-rprint("[bold cyan]Built-in Factorial - Time Complexity: O(n)[/bold cyan]")
-rprint(interview.factorial_builtin(5))  # Output: 120
-rprint(
-    "[bold cyan]Divide and Conquer Factorial - Time Complexity: O(n log n)[/bold cyan]"
-)
-rprint(interview.factorial_divide_and_conquer(5))  # Output: 120
+rprint(Panel("[bold cyan]Recursive Factorial - Time Complexity: O(n)[/bold cyan]\n" + str(interview.factorial_recursive(5)), title="Factorial Recursive"))
+rprint(Panel("[bold cyan]Iterative Factorial - Time Complexity: O(n)[/bold cyan]\n" + str(interview.factorial_iterative(5)), title="Factorial Iterative"))
+rprint(Panel("[bold cyan]Built-in Factorial - Time Complexity: O(n)[/bold cyan]\n" + str(interview.factorial_builtin(5)), title="Factorial Built-in"))
+rprint(Panel("[bold cyan]Divide and Conquer Factorial - Time Complexity: O(n log n)[/bold cyan]\n" + str(interview.factorial_divide_and_conquer(5)), title="Factorial Divide and Conquer"))
 
 # Fibonacci examples
 console.rule("Fibonacci Examples")
-rprint(interview.fibonacci_recursive(7))  # Output: 13
-rprint(interview.fibonacci_iterative(7))  # Output: 13
+rprint(Panel(str(interview.fibonacci_recursive(7)), title="Fibonacci Recursive"))
+rprint(Panel(str(interview.fibonacci_iterative(7)), title="Fibonacci Iterative"))
 
 # Searching examples
 console.rule("Searching Examples")
 array = [1, 3, 5, 7, 9]
-rprint(interview.linear_search(array, 5))  # Output: 2
-rprint(interview.binary_search(array, 5))  # Output: 2
+rprint(Panel(str(interview.linear_search(array, 5)), title="Linear Search"))
+rprint(Panel(str(interview.binary_search(array, 5)), title="Binary Search"))
 
 # Sorting examples
 console.rule("Sorting Examples")
 unsorted_array = [64, 34, 25, 12, 22, 11, 90]
-rprint(
-    interview.bubble_sort(unsorted_array.copy())
-)  # Output: [11, 12, 22, 25, 34, 64, 90]
-rprint(
-    interview.merge_sort(unsorted_array.copy())
-)  # Output: [11, 12, 22, 25, 34, 64, 90]
+rprint(Panel(str(interview.bubble_sort(unsorted_array.copy())), title="Bubble Sort"))
+rprint(Panel(str(interview.merge_sort(unsorted_array.copy())), title="Merge Sort"))
 
 # Stack example
 console.rule("Stack Example")
@@ -302,9 +294,9 @@ stack = interview.Stack()
 stack.push(1)
 stack.push(2)
 stack.push(3)
-rprint(stack.pop())  # Output: 3
-rprint(stack.peek())  # Output: 2
-rprint(stack.size())  # Output: 2
+rprint(Panel(str(stack.pop()), title="Stack Pop"))
+rprint(Panel(str(stack.peek()), title="Stack Peek"))
+rprint(Panel(str(stack.size()), title="Stack Size"))
 
 # Queue example
 console.rule("Queue Example")
@@ -312,9 +304,9 @@ queue = interview.Queue()
 queue.enqueue(1)
 queue.enqueue(2)
 queue.enqueue(3)
-rprint(queue.dequeue())  # Output: 1
-rprint(queue.is_empty())  # Output: False
-rprint(queue.size())  # Output: 2
+rprint(Panel(str(queue.dequeue()), title="Queue Dequeue"))
+rprint(Panel(str(queue.is_empty()), title="Queue Is Empty"))
+rprint(Panel(str(queue.size()), title="Queue Size"))
 
 # Linked List example
 console.rule("Linked List Example")
@@ -331,9 +323,9 @@ root.left = interview.TreeNode(2)
 root.right = interview.TreeNode(3)
 root.left.left = interview.TreeNode(4)
 root.left.right = interview.TreeNode(5)
-rprint(interview.inorder_traversal(root))  # Output: [4, 2, 5, 1, 3]
-rprint(interview.preorder_traversal(root))  # Output: [1, 2, 4, 5, 3]
-rprint(interview.postorder_traversal(root))  # Output: [4, 5, 2, 3, 1]
+rprint(Panel(str(interview.inorder_traversal(root)), title="Inorder Traversal"))
+rprint(Panel(str(interview.preorder_traversal(root)), title="Preorder Traversal"))
+rprint(Panel(str(interview.postorder_traversal(root)), title="Postorder Traversal"))
 
 # Graph Algorithms example
 console.rule("Graph Algorithms Example")
@@ -345,6 +337,7 @@ graph = {
     "E": ["B", "F"],
     "F": ["C", "E"],
 }
-rprint(interview.dfs(graph, "A"))  # Output: {'E', 'D', 'A', 'C', 'B', 'F'}
-rprint(interview.bfs(graph, "A"))  # Output: {'A', 'B', 'C', 'D', 'E', 'F'}
+rprint(Panel(str(interview.dfs(graph, "A")), title="DFS"))
+rprint(Panel(str(interview.bfs(graph, "A")), title="BFS"))
 # code.interact(local=locals())
+
