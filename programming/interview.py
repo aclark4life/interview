@@ -288,6 +288,9 @@ class Graph:
     # Graph Algorithms: Depth-First Search
 
     def dfs(self, graph, start):
+        print("Graph: ", graph)
+        print("Start: ", start)
+
         # Initialize an empty set to keep track of visited nodes
         visited = set()
 
@@ -298,14 +301,16 @@ class Graph:
         while stack:
             # Pop a node from the stack
             vertex = stack.pop()
+            print(f"Vertex: {vertex}")
 
             # If the node has not been visited
             if vertex not in visited:
                 # Mark the node as visited
+                print(f"Visited: {visited}")
                 visited.add(vertex)
 
                 # Add all unvisited neighbors to the stack
-                print(set(graph[vertex]) - visited)
+                print(f"Unvisited: {set(graph[vertex]) - visited}")
                 stack.extend(set(graph[vertex]) - visited)
 
         # Return the set of visited nodes
@@ -313,12 +318,30 @@ class Graph:
 
     # Graph Algorithms: Breadth-First Search
     def bfs(self, graph, start):
-        visited, queue = set(), [start]
+        print("Graph: ", graph)
+        print("Start: ", start)
+
+        # Initialize a set to keep track of visited nodes
+        visited = set()
+        # Initialize the queue with the start node
+        queue = [start]
+        
+        # Continue the loop as long as there are nodes in the queue
         while queue:
+            # Dequeue the first node from the queue
             vertex = queue.pop(0)
+            print(f"Vertex: {vertex}")
+            
+            # If the node has not been visited
             if vertex not in visited:
+                # Mark the node as visited
+                print(f"Visited: {visited}")
                 visited.add(vertex)
+                # Add all unvisited neighbors of the current node to the queue
+                print(f"Unvisited: {set(graph[vertex]) - visited}")
                 queue.extend(set(graph[vertex]) - visited)
+    
+        # Return the set of visited nodes after BFS traversal is complete
         return visited
 
 
