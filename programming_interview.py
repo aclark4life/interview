@@ -355,9 +355,13 @@ def main():
         console.rule("Sorting Examples")
         unsorted_array = [64, 34, 25, 12, 22, 11, 90]
         rprint(
-            Panel(str(interview.bubble_sort(unsorted_array.copy())), title="Bubble Sort")
+            Panel(
+                str(interview.bubble_sort(unsorted_array.copy())), title="Bubble Sort"
+            )
         )
-        rprint(Panel(str(interview.merge_sort(unsorted_array.copy())), title="Merge Sort"))
+        rprint(
+            Panel(str(interview.merge_sort(unsorted_array.copy())), title="Merge Sort")
+        )
         exit()
 
     # Stack example
