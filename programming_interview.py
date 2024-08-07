@@ -3,7 +3,7 @@ from rich.console import Console
 from rich.panel import Panel
 
 import argparse
-import locale   
+import locale
 import math
 import time
 
@@ -12,7 +12,7 @@ import readline  # noqa
 import rlcompleter  # noqa
 
 
-locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+locale.setlocale(locale.LC_ALL, "en_US.UTF-8")
 
 
 class Interview:
@@ -284,7 +284,9 @@ def main():
 
     parser.add_argument("-f", "--factorial", type=int, help="Factorial number")
     parser.add_argument("-b", "--fibonacci", type=int, help="Fibonacci number")
-    parser.add_argument("-i", "--interactive", action="store_true", help="Interactive mode")
+    parser.add_argument(
+        "-i", "--interactive", action="store_true", help="Interactive mode"
+    )
 
     args = parser.parse_args()
 
@@ -324,8 +326,18 @@ def main():
     if args.fibonacci:
         # Fibonacci examples
         console.rule("Fibonacci Examples")
-        rprint(Panel(str(interview.fibonacci_recursive(args.fibonacci)), title="Fibonacci Recursive"))
-        rprint(Panel(str(interview.fibonacci_iterative(args.fibonacci)), title="Fibonacci Iterative"))
+        rprint(
+            Panel(
+                str(interview.fibonacci_recursive(args.fibonacci)),
+                title="Fibonacci Recursive",
+            )
+        )
+        rprint(
+            Panel(
+                str(interview.fibonacci_iterative(args.fibonacci)),
+                title="Fibonacci Iterative",
+            )
+        )
         exit()
 
     # Searching examples
@@ -399,7 +411,10 @@ def main():
     banner = "Interactive session started. Type 'exit()' or 'Ctrl-D' to exit."
 
     if args.interactive:
-        code.interact(banner=banner, local=locals(), exitmsg="Exiting interactive session.")
+        code.interact(
+            banner=banner, local=locals(), exitmsg="Exiting interactive session."
+        )
+
 
 if __name__ == "__main__":
     main()
