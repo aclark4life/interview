@@ -6,8 +6,62 @@ from rich.text import Text
 import math
 import time
 
-
 class Interview:
+    # Data Structures: Binary Tree
+    class TreeNode:
+        def __init__(self, value=0, left=None, right=None):
+            self.value = value
+            self.left = left
+            self.right = right
+
+    # Data Structure: Stack
+    class Stack:
+        def __init__(self):
+            self.items = []
+
+        def push(self, item):
+            self.items.append(item)
+
+        def pop(self):
+            if not self.is_empty():
+                return self.items.pop()
+            return None
+
+        def peek(self):
+            if not self.is_empty():
+                return self.items[-1]
+            return None
+
+        def is_empty(self):
+            return len(self.items) == 0
+
+        def size(self):
+            return len(self.items)
+
+    # Data Structure: Queue
+    class Queue:
+        def __init__(self):
+            self.items = []
+
+        def enqueue(self, item):
+            self.items.append(item)
+
+        def dequeue(self):
+            if not self.is_empty():
+                return self.items.pop(0)
+            return None
+
+        def is_empty(self):
+            return len(self.items) == 0
+
+        def size(self):
+            return len(self.items)
+
+    # Data Structure: Linked List
+    class ListNode:
+        def __init__(self, value=0, next=None):
+            self.value = value
+            self.next = next
     def __init__(self):
         pass
 
@@ -140,55 +194,6 @@ class Interview:
                 k += 1
         return arr
 
-    # Data Structure: Stack
-    class Stack:
-        def __init__(self):
-            self.items = []
-
-        def push(self, item):
-            self.items.append(item)
-
-        def pop(self):
-            if not self.is_empty():
-                return self.items.pop()
-            return None
-
-        def peek(self):
-            if not self.is_empty():
-                return self.items[-1]
-            return None
-
-        def is_empty(self):
-            return len(self.items) == 0
-
-        def size(self):
-            return len(self.items)
-
-    # Data Structure: Queue
-    class Queue:
-        def __init__(self):
-            self.items = []
-
-        def enqueue(self, item):
-            self.items.append(item)
-
-        def dequeue(self):
-            if not self.is_empty():
-                return self.items.pop(0)
-            return None
-
-        def is_empty(self):
-            return len(self.items) == 0
-
-        def size(self):
-            return len(self.items)
-
-    # Data Structure: Linked List
-    class ListNode:
-        def __init__(self, value=0, next=None):
-            self.value = value
-            self.next = next
-
     def insert_linked_list(self, head, value):
         new_node = self.ListNode(value)
         if not head:
@@ -205,13 +210,6 @@ class Interview:
             print(current.value, end=" -> ")
             current = current.next
         print("None")
-
-    # Tree Traversals: Binary Tree
-    class TreeNode:
-        def __init__(self, value=0, left=None, right=None):
-            self.value = value
-            self.left = left
-            self.right = right
 
     def inorder_traversal(self, root):
         return (
@@ -259,7 +257,6 @@ class Interview:
                 visited.add(vertex)
                 queue.extend(set(graph[vertex]) - visited)
         return visited
-
 
 console = Console()
 interview = Interview()
@@ -340,4 +337,3 @@ graph = {
 rprint(Panel(str(interview.dfs(graph, "A")), title="DFS"))
 rprint(Panel(str(interview.bfs(graph, "A")), title="BFS"))
 # code.interact(local=locals())
-
