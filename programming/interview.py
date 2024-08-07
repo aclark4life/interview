@@ -305,6 +305,7 @@ class Graph:
                 visited.add(vertex)
 
                 # Add all unvisited neighbors to the stack
+                print(set(graph[vertex]) - visited)
                 stack.extend(set(graph[vertex]) - visited)
 
         # Return the set of visited nodes
