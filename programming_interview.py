@@ -3,12 +3,16 @@ from rich.console import Console
 from rich.panel import Panel
 
 import argparse
+import locale   
 import math
 import time
 
 import code  # noqa
 import readline  # noqa
 import rlcompleter  # noqa
+
+
+locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 
 
 class Interview:
@@ -92,7 +96,7 @@ class Interview:
         result = self._factorial_recursive(n)  # Calculate factorial
         end_time = time.time()  # End timing
         elapsed_time = end_time - start_time
-        return f"Factorial: {result}, Elapsed time: {elapsed_time:.6f}"
+        return f"  Factorial: {locale.format_string("%.2f", result, grouping=True)}  Elapsed time: {elapsed_time:.6f}"
 
     # Iterative Factorial with Timing
     def factorial_iterative(self, n):
@@ -102,7 +106,7 @@ class Interview:
             result *= i
         end_time = time.time()  # End timing
         elapsed_time = end_time - start_time
-        return f"Factorial: {result}, Elapsed time: {elapsed_time:.6f}"
+        return f"  Factorial: {locale.format_string("%.2f", result, grouping=True)}  Elapsed time: {elapsed_time:.6f}"
 
     # Divide and Conquer Factorial with Timing
     def factorial_divide_and_conquer(self, n):
@@ -110,7 +114,7 @@ class Interview:
         result = self._factorial_divide_and_conquer(1, n)  # Calculate factorial
         end_time = time.time()  # End timing
         elapsed_time = end_time - start_time
-        return f"Factorial: {result}, Elapsed time: {elapsed_time:.6f}"
+        return f"  Factorial: {locale.format_string("%.2f", result, grouping=True)}  Elapsed time: {elapsed_time:.6f}"
 
     # Built-in Factorial with Timing
     def factorial_builtin(self, n):
@@ -122,7 +126,7 @@ class Interview:
         elapsed_time = end_time - start_time
 
         # Print complexity and runtime
-        return f"Factorial: {result}, Elapsed time: {elapsed_time:.6f}"
+        return f"  Factorial: {locale.format_string("%.2f", result, grouping=True)}  Elapsed time: {elapsed_time:.6f}"
 
     # Recursion: Fibonacci
     def fibonacci_recursive(self, n):
