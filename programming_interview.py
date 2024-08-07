@@ -4,6 +4,9 @@ class Interview:
 
     # Recursion: Factorial
     def factorial_recursive(self, n):
+        """
+        Factorial of a number n is the product of all positive integers less than or equal to n.
+        """
         if n == 0:
             return 1
         return n * self.factorial_recursive(n - 1)
@@ -14,6 +17,12 @@ class Interview:
         for i in range(1, n + 1):
             result *= i
         return result
+
+    # Built-in: Factorial
+    def factorial_builtin(self, n):
+        import math
+
+        return math.factorial(n)
 
     # Recursion: Fibonacci
     def fibonacci_recursive(self, n):
@@ -218,6 +227,7 @@ interview = Interview()
 # Factorial examples
 print(interview.factorial_recursive(5))  # Output: 120
 print(interview.factorial_iterative(5))  # Output: 120
+print(interview.factorial_builtin(5))  # Output: 120
 
 # Fibonacci examples
 print(interview.fibonacci_recursive(7))  # Output: 13
