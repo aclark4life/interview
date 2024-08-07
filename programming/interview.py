@@ -155,10 +155,7 @@ class Fibonacci:
         return b
 
 
-class Interview(DataStructure, Factorial, Fibonacci):
-    """
-    Programming Interview Questions
-    """
+class Search:
 
     # Searching: Linear Search
     def linear_search(self, arr, target):
@@ -180,6 +177,8 @@ class Interview(DataStructure, Factorial, Fibonacci):
                 right = mid - 1
         return -1
 
+
+class Sort:
     # Sorting: Bubble Sort
     def bubble_sort(self, arr):
         n = len(arr)
@@ -220,6 +219,12 @@ class Interview(DataStructure, Factorial, Fibonacci):
                 j += 1
                 k += 1
         return arr
+
+
+class Interview(DataStructure, Factorial, Fibonacci, Search, Sort):
+    """
+    Programming Interview Questions
+    """
 
     def insert_linked_list(self, head, value):
         new_node = self.ListNode(value)
