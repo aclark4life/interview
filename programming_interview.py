@@ -1,4 +1,6 @@
 import code
+import math
+import time
 import rlcompleter
 
 
@@ -6,47 +8,83 @@ class Interview:
     def __init__(self):
         pass
 
-    # Recursion: Factorial
+    # Recursive Factorial with Timing
     def factorial_recursive(self, n):
-        """
-        Factorial of a number n is the product of all positive integers less than or equal to n.
-        """
+        start_time = time.time()  # Start timing
+        result = self._factorial_recursive_helper(n)  # Calculate factorial
+        end_time = time.time()  # End timing
+
+        # Calculate elapsed time
+        elapsed_time = end_time - start_time
+
+        # Print complexity and runtime
+        print("Recursive Factorial - Time Complexity: O(n), Space Complexity: O(n)")
+        print(f"Runtime: {elapsed_time:.6f} seconds")
+        return result
+
+    def _factorial_recursive_helper(self, n):
         if n == 0:
             return 1
-        return n * self.factorial_recursive(n - 1)
+        return n * self._factorial_recursive_helper(n - 1)
 
-    # Iteration: Factorial
+    # Iterative Factorial with Timing
     def factorial_iterative(self, n):
+        start_time = time.time()  # Start timing
         result = 1
         for i in range(1, n + 1):
             result *= i
+        end_time = time.time()  # End timing
+
+        # Calculate elapsed time
+        elapsed_time = end_time - start_time
+
+        # Print complexity and runtime
+        print("Iterative Factorial - Time Complexity: O(n), Space Complexity: O(1)")
+        print(f"Runtime: {elapsed_time:.6f} seconds")
         return result
 
-    # Built-in: Factorial
-    def factorial_builtin(self, n):
-        import math
+    # Divide and Conquer Factorial with Timing
+    def factorial_divide_and_conquer(self, n):
+        start_time = time.time()  # Start timing
+        result = self._divide_and_conquer_helper(1, n)  # Calculate factorial
+        end_time = time.time()  # End timing
 
-        return math.factorial(n)
+        # Calculate elapsed time
+        elapsed_time = end_time - start_time
+
+        # Print complexity and runtime
+        print("Divide and Conquer Factorial - Time Complexity: O(n log n), Space Complexity: O(log n)")
+        print(f"Runtime: {elapsed_time:.6f} seconds")
+        return result
+
+    def _divide_and_conquer_helper(self, low, high):
+        if low > high:
+            return 1
+        if low == high:
+            return low
+        mid = (low + high) // 2
+        return (self._divide_and_conquer_helper(low, mid) *
+                self._divide_and_conquer_helper(mid + 1, high))
+
+    # Built-in Factorial with Timing
+    def factorial_builtin(self, n):
+        start_time = time.time()  # Start timing
+        result = math.factorial(n)  # Calculate factorial using built-in
+        end_time = time.time()  # End timing
+
+        # Calculate elapsed time
+        elapsed_time = end_time - start_time
+
+        # Print complexity and runtime
+        print("Built-in Factorial - Time Complexity: O(n), Space Complexity: O(1)")
+        print(f"Runtime: {elapsed_time:.6f} seconds")
+        return result
 
     # Recursion: Fibonacci
     def fibonacci_recursive(self, n):
         if n <= 1:
             return n
         return self.fibonacci_recursive(n - 1) + self.fibonacci_recursive(n - 2)
-
-    # Divide and Conquer: Factorial
-    def factorial_divide_and_conquer(self, n):
-        if n == 0 or n == 1:
-            return 1
-        return self.factorial_divide_and_conquer_helper(1, n)
-    
-    def factorial_divide_and_conquer_helper(self, low, high):
-        if low > high:
-            return 1
-        if low == high:
-            return low
-        mid = (low + high) // 2
-        return self.factorial_divide_and_conquer_helper(low, mid) * self.factorial_divide_and_conquer_helper(mid + 1, high)
 
     # Iteration: Fibonacci
     def fibonacci_iterative(self, n):
@@ -312,4 +350,4 @@ graph = {
 }
 print(interview.dfs(graph, "A"))  # Output: {'E', 'D', 'A', 'C', 'B', 'F'}
 print(interview.bfs(graph, "A"))  # Output: {'A', 'B', 'C', 'D', 'E', 'F'}
-code.interact(local=locals())
+# code.interact(local=locals())
