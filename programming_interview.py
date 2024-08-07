@@ -6,6 +6,11 @@ import argparse
 import math
 import time
 
+import code  # noqa: F401
+import readline  # noqa: F401
+import rlcompleter  # noqa: F401
+
+
 
 class Interview:
     # Data Structures: Binary Tree
@@ -261,6 +266,13 @@ class Interview:
         return visited
 
 
+def setup_readline(local):
+    # Enable tab completion
+    readline.parse_and_bind("tab: complete")
+    # Optionally, you can set the completer function manually
+    readline.set_completer(rlcompleter.Completer(local).complete)
+
+
 def main():
     console = Console()
     interview = Interview()
@@ -374,6 +386,11 @@ def main():
     }
     rprint(Panel(str(interview.dfs(graph, "A")), title="DFS"))
     rprint(Panel(str(interview.bfs(graph, "A")), title="BFS"))
+
+    # Starting interactive session with tab completion
+    setup_readline(locals())
+    banner = "Interactive session started. Type 'exit()' or 'Ctrl-D' to exit."
+    code.interact(banner=banner, local=locals(), exitmsg="Exiting interactive session.")
 
 
 if __name__ == "__main__":
