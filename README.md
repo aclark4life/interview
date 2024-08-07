@@ -1,3 +1,3 @@
-# programming-interview
+# Interview Prep
 
 ![Programming Interview](screenshot.png)
