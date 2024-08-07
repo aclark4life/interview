@@ -282,10 +282,15 @@ def main():
 
     parser = argparse.ArgumentParser(description="Programming Interview Questions")
 
-    parser.add_argument("-f", "--factorial", type=int, help="Factorial number")
-    parser.add_argument("--fibonacci", type=int, help="Fibonacci number")
-    parser.add_argument("--search", action="store_true", help="Search examples")
-    parser.add_argument("--sort", action="store_true", help="Search examples")
+    parser.add_argument("-f", "--factorial", type=int, help="Factorial algorithm examples")
+    parser.add_argument("--fibonacci", type=int, help="Fibonacci algorithm examples")
+    parser.add_argument("--search", action="store_true", help="Search algorithm examples")
+    parser.add_argument("--sort", action="store_true", help="Search algorithm examples")
+    parser.add_argument("--stack", action="store_true", help="Stack algorithm examples")
+    parser.add_argument("--queue", action="store_true", help="Queue algorithm examples")
+    parser.add_argument("--list", action="store_true", help="Linked List algorithm examples")
+    parser.add_argument("--tree", action="store_true", help="Tree traversal algorithm examples")
+    parser.add_argument("--graph", action="store_true", help="Graph algorithm examples")
     parser.add_argument(
         "-i", "--interactive", action="store_true", help="Interactive mode"
     )
@@ -364,65 +369,69 @@ def main():
         )
         exit()
 
-    # Stack example
-    console.rule("Stack Example")
-    stack = interview.Stack()
-    stack.push(1)
-    stack.push(2)
-    stack.push(3)
-    rprint(Panel(str(stack.pop()), title="Stack Pop"))
-    rprint(Panel(str(stack.peek()), title="Stack Peek"))
-    rprint(Panel(str(stack.size()), title="Stack Size"))
+    if args.stack:
+        # Stack example
+        console.rule("Stack Example")
+        stack = interview.Stack()
+        stack.push(1)
+        stack.push(2)
+        stack.push(3)
+        rprint(Panel(str(stack.pop()), title="Stack Pop"))
+        rprint(Panel(str(stack.peek()), title="Stack Peek"))
+        rprint(Panel(str(stack.size()), title="Stack Size"))
 
-    # Queue example
-    console.rule("Queue Example")
-    queue = interview.Queue()
-    queue.enqueue(1)
-    queue.enqueue(2)
-    queue.enqueue(3)
-    rprint(Panel(str(queue.dequeue()), title="Queue Dequeue"))
-    rprint(Panel(str(queue.is_empty()), title="Queue Is Empty"))
-    rprint(Panel(str(queue.size()), title="Queue Size"))
+    if args.queue:
+        # Queue example
+        console.rule("Queue Example")
+        queue = interview.Queue()
+        queue.enqueue(1)
+        queue.enqueue(2)
+        queue.enqueue(3)
+        rprint(Panel(str(queue.dequeue()), title="Queue Dequeue"))
+        rprint(Panel(str(queue.is_empty()), title="Queue Is Empty"))
+        rprint(Panel(str(queue.size()), title="Queue Size"))
 
-    # Linked List example
-    console.rule("Linked List Example")
-    head = None
-    head = interview.insert_linked_list(head, 1)
-    head = interview.insert_linked_list(head, 2)
-    head = interview.insert_linked_list(head, 3)
-    interview.print_linked_list(head)  # Output: 1 -> 2 -> 3 -> None
+    if args.list:
+        # Linked List example
+        console.rule("Linked List Example")
+        head = None
+        head = interview.insert_linked_list(head, 1)
+        head = interview.insert_linked_list(head, 2)
+        head = interview.insert_linked_list(head, 3)
+        interview.print_linked_list(head)  # Output: 1 -> 2 -> 3 -> None
 
-    # Tree Traversal example
-    console.rule("Tree Traversal Example")
-    root = interview.TreeNode(1)
-    root.left = interview.TreeNode(2)
-    root.right = interview.TreeNode(3)
-    root.left.left = interview.TreeNode(4)
-    root.left.right = interview.TreeNode(5)
-    rprint(Panel(str(interview.inorder_traversal(root)), title="Inorder Traversal"))
-    rprint(Panel(str(interview.preorder_traversal(root)), title="Preorder Traversal"))
-    rprint(Panel(str(interview.postorder_traversal(root)), title="Postorder Traversal"))
+    if args.tree:
+        # Tree Traversal example
+        console.rule("Tree Traversal Example")
+        root = interview.TreeNode(1)
+        root.left = interview.TreeNode(2)
+        root.right = interview.TreeNode(3)
+        root.left.left = interview.TreeNode(4)
+        root.left.right = interview.TreeNode(5)
+        rprint(Panel(str(interview.inorder_traversal(root)), title="Inorder Traversal"))
+        rprint(Panel(str(interview.preorder_traversal(root)), title="Preorder Traversal"))
+        rprint(Panel(str(interview.postorder_traversal(root)), title="Postorder Traversal"))
 
-    # Graph Algorithms example
-    console.rule("Graph Algorithms Example")
-    graph = {
-        "A": ["B", "C"],
-        "B": ["A", "D", "E"],
-        "C": ["A", "F"],
-        "D": ["B"],
-        "E": ["B", "F"],
-        "F": ["C", "E"],
-    }
-    rprint(Panel(str(interview.dfs(graph, "A")), title="DFS"))
-    rprint(Panel(str(interview.bfs(graph, "A")), title="BFS"))
-
-    # Starting interactive session with tab completion
-    setup_readline(locals())
-    banner = "Interactive session started. Type 'exit()' or 'Ctrl-D' to exit."
+    if args.graph:
+        # Graph Algorithms example
+        console.rule("Graph Algorithms Example")
+        graph = {
+            "A": ["B", "C"],
+            "B": ["A", "D", "E"],
+            "C": ["A", "F"],
+            "D": ["B"],
+            "E": ["B", "F"],
+            "F": ["C", "E"],
+        }
+        rprint(Panel(str(interview.dfs(graph, "A")), title="DFS"))
+        rprint(Panel(str(interview.bfs(graph, "A")), title="BFS"))
 
     if args.interactive:
+        # Starting interactive session with tab completion
+        setup_readline(locals())
+        banner = "Interactive programming interview session started. Type 'exit()' or 'Ctrl-D' to exit."
         code.interact(
-            banner=banner, local=locals(), exitmsg="Exiting interactive session."
+            banner=banner, local=locals(), exitmsg="You may or may not have gotten the job!"
         )
 
 
