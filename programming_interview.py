@@ -11,7 +11,6 @@ import readline  # noqa: F401
 import rlcompleter  # noqa: F401
 
 
-
 class Interview:
     # Data Structures: Binary Tree
     class TreeNode:
