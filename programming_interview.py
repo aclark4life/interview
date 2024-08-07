@@ -284,6 +284,7 @@ def main():
 
     parser.add_argument("-f", "--factorial", type=int, help="Factorial number")
     parser.add_argument("-b", "--fibonacci", type=int, help="Fibonacci number")
+    parser.add_argument("-s", "--search", action="store_true", help="Search examples")
     parser.add_argument(
         "-i", "--interactive", action="store_true", help="Interactive mode"
     )
@@ -340,11 +341,13 @@ def main():
         )
         exit()
 
-    # Searching examples
-    console.rule("Searching Examples")
-    array = [1, 3, 5, 7, 9]
-    rprint(Panel(str(interview.linear_search(array, 5)), title="Linear Search"))
-    rprint(Panel(str(interview.binary_search(array, 5)), title="Binary Search"))
+    if args.search:
+        # Searching examples
+        console.rule("Searching Examples")
+        array = [1, 3, 5, 7, 9]
+        rprint(Panel(str(interview.linear_search(array, 5)), title="Linear Search"))
+        rprint(Panel(str(interview.binary_search(array, 5)), title="Binary Search"))
+        exit()
 
     # Sorting examples
     console.rule("Sorting Examples")
