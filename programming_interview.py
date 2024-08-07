@@ -3,7 +3,9 @@ from rich.console import Console
 from rich.panel import Panel
 
 import argparse
+import code
 import math
+import rlcompleter
 import time
 
 
@@ -88,7 +90,7 @@ class Interview:
         result = self._factorial_recursive(n)  # Calculate factorial
         end_time = time.time()  # End timing
         elapsed_time = end_time - start_time
-        return f"{result}, {elapsed_time:.6f}"
+        return f"Factorial: {result}, Elapsed time: {elapsed_time:.6f}"
 
     # Iterative Factorial with Timing
     def factorial_iterative(self, n):
@@ -98,7 +100,7 @@ class Interview:
             result *= i
         end_time = time.time()  # End timing
         elapsed_time = end_time - start_time
-        return f"{result}, {elapsed_time:.6f}"
+        return f"Factorial: {result}, Elapsed time: {elapsed_time:.6f}"
 
     # Divide and Conquer Factorial with Timing
     def factorial_divide_and_conquer(self, n):
@@ -106,7 +108,7 @@ class Interview:
         result = self._factorial_divide_and_conquer(1, n)  # Calculate factorial
         end_time = time.time()  # End timing
         elapsed_time = end_time - start_time
-        return f"{result}, {elapsed_time:.6f}"
+        return f"Factorial: {result}, Elapsed time: {elapsed_time:.6f}"
 
     # Built-in Factorial with Timing
     def factorial_builtin(self, n):
@@ -118,7 +120,7 @@ class Interview:
         elapsed_time = end_time - start_time
 
         # Print complexity and runtime
-        return f"{result}, {elapsed_time:.6f}"
+        return f"Factorial: {result}, Elapsed time: {elapsed_time:.6f}"
 
     # Recursion: Fibonacci
     def fibonacci_recursive(self, n):
@@ -374,8 +376,6 @@ def main():
     }
     rprint(Panel(str(interview.dfs(graph, "A")), title="DFS"))
     rprint(Panel(str(interview.bfs(graph, "A")), title="BFS"))
-    # code.interact(local=locals())
-
 
 if __name__ == "__main__":
     main()
