@@ -6,9 +6,9 @@ import argparse
 import math
 import time
 
-import code  # noqa: F401
-import readline  # noqa: F401
-import rlcompleter  # noqa: F401
+import code  # noqa
+import readline  # noqa
+import rlcompleter  # noqa
 
 
 class Interview:
