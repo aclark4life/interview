@@ -8,24 +8,27 @@ class Interview:
     def __init__(self):
         pass
 
+    def _factorial_recursive(self, n):
+        if n == 0:
+            return 1
+        return n * self._factorial_recursive(n - 1)
+
+    def _factorial_divide_and_conquer(self, low, high):
+        if low > high:
+            return 1
+        if low == high:
+            return low
+        mid = (low + high) // 2
+        return (self._factorial_divide_and_conquer(low, mid) *
+                self._factorial_divide_and_conquer(mid + 1, high))
+
     # Recursive Factorial with Timing
     def factorial_recursive(self, n):
         start_time = time.time()  # Start timing
-        result = self._factorial_recursive_helper(n)  # Calculate factorial
+        result = self._factorial_recursive(n)  # Calculate factorial
         end_time = time.time()  # End timing
-
-        # Calculate elapsed time
         elapsed_time = end_time - start_time
-
-        # Print complexity and runtime
-        print("Recursive Factorial - Time Complexity: O(n)")
-        print(f"Runtime: {elapsed_time:.6f} seconds")
-        return result
-
-    def _factorial_recursive_helper(self, n):
-        if n == 0:
-            return 1
-        return n * self._factorial_recursive_helper(n - 1)
+        return result, f"{elapsed_time:.6f}"
 
     # Iterative Factorial with Timing
     def factorial_iterative(self, n):
@@ -34,37 +37,16 @@ class Interview:
         for i in range(1, n + 1):
             result *= i
         end_time = time.time()  # End timing
-
-        # Calculate elapsed time
         elapsed_time = end_time - start_time
-
-        # Print complexity and runtime
-        print("Iterative Factorial - Time Complexity: O(n)")
-        print(f"Runtime: {elapsed_time:.6f} seconds")
-        return result
+        return result, f"{elapsed_time:.6f}"
 
     # Divide and Conquer Factorial with Timing
     def factorial_divide_and_conquer(self, n):
         start_time = time.time()  # Start timing
-        result = self._divide_and_conquer_helper(1, n)  # Calculate factorial
+        result = self._factorial_divide_and_conquer(1, n)  # Calculate factorial
         end_time = time.time()  # End timing
-
-        # Calculate elapsed time
         elapsed_time = end_time - start_time
-
-        # Print complexity and runtime
-        print("Divide and Conquer Factorial - Time Complexity: O(n log n)")
-        print(f"Runtime: {elapsed_time:.6f} seconds")
-        return result
-
-    def _divide_and_conquer_helper(self, low, high):
-        if low > high:
-            return 1
-        if low == high:
-            return low
-        mid = (low + high) // 2
-        return (self._divide_and_conquer_helper(low, mid) *
-                self._divide_and_conquer_helper(mid + 1, high))
+        return result, f"{elapsed_time:.6f}"
 
     # Built-in Factorial with Timing
     def factorial_builtin(self, n):
@@ -76,9 +58,7 @@ class Interview:
         elapsed_time = end_time - start_time
 
         # Print complexity and runtime
-        print("Built-in Factorial - Time Complexity: O(n)")
-        print(f"Runtime: {elapsed_time:.6f} seconds")
-        return result
+        return result, elapsed_time
 
     # Recursion: Fibonacci
     def fibonacci_recursive(self, n):
@@ -281,9 +261,13 @@ class Interview:
 interview = Interview()
 
 # Factorial examples
+print("Recursive Factorial - Time Complexity: O(n)")
 print(interview.factorial_recursive(5))  # Output: 120
+print("Iterative Factorial - Time Complexity: O(n)")
 print(interview.factorial_iterative(5))  # Output: 120
+print("Built-in Factorial - Time Complexity: O(n)")
 print(interview.factorial_builtin(5))  # Output: 120
+print("Divide and Conquer Factorial - Time Complexity: O(n log n)")
 print(interview.factorial_divide_and_conquer(5))  # Output: 120
 
 # Fibonacci examples
