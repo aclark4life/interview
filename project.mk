@@ -1,4 +1,4 @@
 PROJECT_NAME := programming-interview
 
-pi:
+i:
 	python3 programming_interview.py
