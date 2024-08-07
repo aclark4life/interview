@@ -283,9 +283,9 @@ def main():
     parser = argparse.ArgumentParser(description="Programming Interview Questions")
 
     parser.add_argument("-f", "--factorial", type=int, help="Factorial number")
-    parser.add_argument("-b", "--fibonacci", type=int, help="Fibonacci number")
-    parser.add_argument("-s", "--search", action="store_true", help="Search examples")
-    parser.add_argument("-o", "--sort", action="store_true", help="Search examples")
+    parser.add_argument("--fibonacci", type=int, help="Fibonacci number")
+    parser.add_argument("--search", action="store_true", help="Search examples")
+    parser.add_argument("--sort", action="store_true", help="Search examples")
     parser.add_argument(
         "-i", "--interactive", action="store_true", help="Interactive mode"
     )
