@@ -265,44 +265,44 @@ def main():
     console = Console()
     interview = Interview()
 
-    parser = argparse.ArgumentParser(description="A simple argument parser example.")
-    parser.add_argument("--name", type=str, help="Your name")
-    parser.add_argument("--age", type=int, help="Your age")
+    parser = argparse.ArgumentParser(description="Programming Interview Questions")
+
+    parser.add_argument("-f", "--factorial", type=int, help="Factorial number")
 
     args = parser.parse_args()
 
-    print(f"Hello, {args.name}! You are {args.age} years old.")
-
-    # Factorial examples
-    console.rule("Factorial Examples")
-    rprint(
-        Panel(
-            "[bold cyan]Recursive Factorial - Time Complexity: O(n)[/bold cyan]\n"
-            + str(interview.factorial_recursive(5)),
-            title="Factorial Recursive",
+    if args.factorial:
+        # Factorial examples
+        console.rule("Factorial Examples")
+        rprint(
+            Panel(
+                "[bold cyan]Recursive Factorial - Time Complexity: O(n)[/bold cyan]\n"
+                + str(interview.factorial_recursive(args.factorial)),
+                title="Factorial Recursive",
+            )
         )
-    )
-    rprint(
-        Panel(
-            "[bold cyan]Iterative Factorial - Time Complexity: O(n)[/bold cyan]\n"
-            + str(interview.factorial_iterative(5)),
-            title="Factorial Iterative",
+        rprint(
+            Panel(
+                "[bold cyan]Iterative Factorial - Time Complexity: O(n)[/bold cyan]\n"
+                + str(interview.factorial_iterative(args.factorial)),
+                title="Factorial Iterative",
+            )
         )
-    )
-    rprint(
-        Panel(
-            "[bold cyan]Built-in Factorial - Time Complexity: O(n)[/bold cyan]\n"
-            + str(interview.factorial_builtin(5)),
-            title="Factorial Built-in",
+        rprint(
+            Panel(
+                "[bold cyan]Built-in Factorial - Time Complexity: O(n)[/bold cyan]\n"
+                + str(interview.factorial_builtin(args.factorial)),
+                title="Factorial Built-in",
+            )
         )
-    )
-    rprint(
-        Panel(
-            "[bold cyan]Divide and Conquer Factorial - Time Complexity: O(n log n)[/bold cyan]\n"
-            + str(interview.factorial_divide_and_conquer(5)),
-            title="Factorial Divide and Conquer",
+        rprint(
+            Panel(
+                "[bold cyan]Divide and Conquer Factorial - Time Complexity: O(n log n)[/bold cyan]\n"
+                + str(interview.factorial_divide_and_conquer(args.factorial)),
+                title="Factorial Divide and Conquer",
+            )
         )
-    )
+        exit()
 
     # Fibonacci examples
     console.rule("Fibonacci Examples")
