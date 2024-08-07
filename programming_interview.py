@@ -285,6 +285,7 @@ def main():
     parser.add_argument("-f", "--factorial", type=int, help="Factorial number")
     parser.add_argument("-b", "--fibonacci", type=int, help="Fibonacci number")
     parser.add_argument("-s", "--search", action="store_true", help="Search examples")
+    parser.add_argument("-o", "--sort", action="store_true", help="Search examples")
     parser.add_argument(
         "-i", "--interactive", action="store_true", help="Interactive mode"
     )
@@ -349,13 +350,15 @@ def main():
         rprint(Panel(str(interview.binary_search(array, 5)), title="Binary Search"))
         exit()
 
-    # Sorting examples
-    console.rule("Sorting Examples")
-    unsorted_array = [64, 34, 25, 12, 22, 11, 90]
-    rprint(
-        Panel(str(interview.bubble_sort(unsorted_array.copy())), title="Bubble Sort")
-    )
-    rprint(Panel(str(interview.merge_sort(unsorted_array.copy())), title="Merge Sort"))
+    if args.sort:
+        # Sorting examples
+        console.rule("Sorting Examples")
+        unsorted_array = [64, 34, 25, 12, 22, 11, 90]
+        rprint(
+            Panel(str(interview.bubble_sort(unsorted_array.copy())), title="Bubble Sort")
+        )
+        rprint(Panel(str(interview.merge_sort(unsorted_array.copy())), title="Merge Sort"))
+        exit()
 
     # Stack example
     console.rule("Stack Example")
