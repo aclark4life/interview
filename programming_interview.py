@@ -283,6 +283,8 @@ def main():
     parser = argparse.ArgumentParser(description="Programming Interview Questions")
 
     parser.add_argument("-f", "--factorial", type=int, help="Factorial number")
+    parser.add_argument("-b", "--fibonacci", type=int, help="Fibonacci number")
+    parser.add_argument("-i", "--interactive", action="store_true", help="Interactive mode")
 
     args = parser.parse_args()
 
@@ -319,10 +321,12 @@ def main():
         )
         exit()
 
-    # Fibonacci examples
-    console.rule("Fibonacci Examples")
-    rprint(Panel(str(interview.fibonacci_recursive(7)), title="Fibonacci Recursive"))
-    rprint(Panel(str(interview.fibonacci_iterative(7)), title="Fibonacci Iterative"))
+    if args.fibonacci:
+        # Fibonacci examples
+        console.rule("Fibonacci Examples")
+        rprint(Panel(str(interview.fibonacci_recursive(args.fibonacci)), title="Fibonacci Recursive"))
+        rprint(Panel(str(interview.fibonacci_iterative(args.fibonacci)), title="Fibonacci Iterative"))
+        exit()
 
     # Searching examples
     console.rule("Searching Examples")
@@ -393,8 +397,9 @@ def main():
     # Starting interactive session with tab completion
     setup_readline(locals())
     banner = "Interactive session started. Type 'exit()' or 'Ctrl-D' to exit."
-    code.interact(banner=banner, local=locals(), exitmsg="Exiting interactive session.")
 
+    if args.interactive:
+        code.interact(banner=banner, local=locals(), exitmsg="Exiting interactive session.")
 
 if __name__ == "__main__":
     main()

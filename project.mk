@@ -7,3 +7,6 @@ i:
 
 f:
 	python3 programming_interview.py -f 5
+
+b:
+	python3 programming_interview.py -b 7
