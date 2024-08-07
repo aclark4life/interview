@@ -138,7 +138,6 @@ class Factorial:
 
 
 class Fibonacci:
-
     # Recursion: Fibonacci
     def fibonacci_recursive(self, n):
         if n <= 1:
@@ -156,7 +155,6 @@ class Fibonacci:
 
 
 class Search:
-
     # Searching: Linear Search
     def linear_search(self, arr, target):
         for i, value in enumerate(arr):
@@ -224,7 +222,7 @@ class Sort:
 class List:
     """
     Linked List Algorithms for Programming Interview Questions
-    """ 
+    """
 
     # Insert into Linked List
     def insert_linked_list(self, head, value):
@@ -288,13 +286,28 @@ class Graph:
     """
 
     # Graph Algorithms: Depth-First Search
+
     def dfs(self, graph, start):
-        visited, stack = set(), [start]
+        # Initialize an empty set to keep track of visited nodes
+        visited = set()
+
+        # Initialize a stack with the start node
+        stack = [start]
+
+        # Loop until the stack is empty
         while stack:
+            # Pop a node from the stack
             vertex = stack.pop()
+
+            # If the node has not been visited
             if vertex not in visited:
+                # Mark the node as visited
                 visited.add(vertex)
+
+                # Add all unvisited neighbors to the stack
                 stack.extend(set(graph[vertex]) - visited)
+
+        # Return the set of visited nodes
         return visited
 
     # Graph Algorithms: Breadth-First Search
@@ -308,7 +321,9 @@ class Graph:
         return visited
 
 
-class Interview(DataStructure, Factorial, Fibonacci, Search, Sort, List, Traversal, Graph):
+class Interview(
+    DataStructure, Factorial, Fibonacci, Search, Sort, List, Traversal, Graph
+):
     """
     Programming Interview Questions
     """
