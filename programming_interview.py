@@ -1,3 +1,6 @@
+from rich import print as rprint
+from rich.console import Console
+
 import code
 import math
 import time
@@ -257,56 +260,59 @@ class Interview:
         return visited
 
 
-# Example usage
+console = Console()
 interview = Interview()
 
 # Factorial examples
-print("Recursive Factorial - Time Complexity: O(n)")
-print(interview.factorial_recursive(5))  # Output: 120
-print("Iterative Factorial - Time Complexity: O(n)")
-print(interview.factorial_iterative(5))  # Output: 120
-print("Built-in Factorial - Time Complexity: O(n)")
-print(interview.factorial_builtin(5))  # Output: 120
-print("Divide and Conquer Factorial - Time Complexity: O(n log n)")
-print(interview.factorial_divide_and_conquer(5))  # Output: 120
+console.rule("Factorial Examples")
+rprint("[bold cyan]Recursive Factorial - Time Complexity: O(n)[/bold cyan]")
+rprint(interview.factorial_recursive(5))  # Output: 120
+rprint("[bold cyan]Iterative Factorial - Time Complexity: O(n)[/bold cyan]")
+rprint(interview.factorial_iterative(5))  # Output: 120
+rprint("[bold cyan]Built-in Factorial - Time Complexity: O(n)[/bold cyan]")
+rprint(interview.factorial_builtin(5))  # Output: 120
+rprint("[bold cyan]Divide and Conquer Factorial - Time Complexity: O(n log n)[/bold cyan]")
+rprint(interview.factorial_divide_and_conquer(5))  # Output: 120
 
 # Fibonacci examples
-print(interview.fibonacci_recursive(7))  # Output: 13
-print(interview.fibonacci_iterative(7))  # Output: 13
+console.rule("Fibonacci Examples")
+rprint(interview.fibonacci_recursive(7))  # Output: 13
+rprint(interview.fibonacci_iterative(7))  # Output: 13
 
 # Searching examples
+console.rule("Searching Examples")
 array = [1, 3, 5, 7, 9]
-print(interview.linear_search(array, 5))  # Output: 2
-print(interview.binary_search(array, 5))  # Output: 2
+rprint(interview.linear_search(array, 5))  # Output: 2
+rprint(interview.binary_search(array, 5))  # Output: 2
 
 # Sorting examples
+console.rule("Sorting Examples")
 unsorted_array = [64, 34, 25, 12, 22, 11, 90]
-print(
-    interview.bubble_sort(unsorted_array.copy())
-)  # Output: [11, 12, 22, 25, 34, 64, 90]
-print(
-    interview.merge_sort(unsorted_array.copy())
-)  # Output: [11, 12, 22, 25, 34, 64, 90]
+rprint(interview.bubble_sort(unsorted_array.copy()))  # Output: [11, 12, 22, 25, 34, 64, 90]
+rprint(interview.merge_sort(unsorted_array.copy()))  # Output: [11, 12, 22, 25, 34, 64, 90]
 
 # Stack example
+console.rule("Stack Example")
 stack = interview.Stack()
 stack.push(1)
 stack.push(2)
 stack.push(3)
-print(stack.pop())  # Output: 3
-print(stack.peek())  # Output: 2
-print(stack.size())  # Output: 2
+rprint(stack.pop())  # Output: 3
+rprint(stack.peek())  # Output: 2
+rprint(stack.size())  # Output: 2
 
 # Queue example
+console.rule("Queue Example")
 queue = interview.Queue()
 queue.enqueue(1)
 queue.enqueue(2)
 queue.enqueue(3)
-print(queue.dequeue())  # Output: 1
-print(queue.is_empty())  # Output: False
-print(queue.size())  # Output: 2
+rprint(queue.dequeue())  # Output: 1
+rprint(queue.is_empty())  # Output: False
+rprint(queue.size())  # Output: 2
 
 # Linked List example
+console.rule("Linked List Example")
 head = None
 head = interview.insert_linked_list(head, 1)
 head = interview.insert_linked_list(head, 2)
@@ -314,16 +320,18 @@ head = interview.insert_linked_list(head, 3)
 interview.print_linked_list(head)  # Output: 1 -> 2 -> 3 -> None
 
 # Tree Traversal example
+console.rule("Tree Traversal Example")
 root = interview.TreeNode(1)
 root.left = interview.TreeNode(2)
 root.right = interview.TreeNode(3)
 root.left.left = interview.TreeNode(4)
 root.left.right = interview.TreeNode(5)
-print(interview.inorder_traversal(root))  # Output: [4, 2, 5, 1, 3]
-print(interview.preorder_traversal(root))  # Output: [1, 2, 4, 5, 3]
-print(interview.postorder_traversal(root))  # Output: [4, 5, 2, 3, 1]
+rprint(interview.inorder_traversal(root))  # Output: [4, 2, 5, 1, 3]
+rprint(interview.preorder_traversal(root))  # Output: [1, 2, 4, 5, 3]
+rprint(interview.postorder_traversal(root))  # Output: [4, 5, 2, 3, 1]
 
 # Graph Algorithms example
+console.rule("Graph Algorithms Example")
 graph = {
     "A": ["B", "C"],
     "B": ["A", "D", "E"],
@@ -332,6 +340,6 @@ graph = {
     "E": ["B", "F"],
     "F": ["C", "E"],
 }
-print(interview.dfs(graph, "A"))  # Output: {'E', 'D', 'A', 'C', 'B', 'F'}
-print(interview.bfs(graph, "A"))  # Output: {'A', 'B', 'C', 'D', 'E', 'F'}
+rprint(interview.dfs(graph, "A"))  # Output: {'E', 'D', 'A', 'C', 'B', 'F'}
+rprint(interview.bfs(graph, "A"))  # Output: {'A', 'B', 'C', 'D', 'E', 'F'}
 # code.interact(local=locals())
