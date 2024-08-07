@@ -28,7 +28,7 @@ class Interview:
         result = self._factorial_recursive(n)  # Calculate factorial
         end_time = time.time()  # End timing
         elapsed_time = end_time - start_time
-        return result, f"{elapsed_time:.6f}"
+        return f"{result}, {elapsed_time:.6f}"
 
     # Iterative Factorial with Timing
     def factorial_iterative(self, n):
@@ -38,7 +38,7 @@ class Interview:
             result *= i
         end_time = time.time()  # End timing
         elapsed_time = end_time - start_time
-        return result, f"{elapsed_time:.6f}"
+        return f"{result}, {elapsed_time:.6f}"
 
     # Divide and Conquer Factorial with Timing
     def factorial_divide_and_conquer(self, n):
@@ -46,7 +46,7 @@ class Interview:
         result = self._factorial_divide_and_conquer(1, n)  # Calculate factorial
         end_time = time.time()  # End timing
         elapsed_time = end_time - start_time
-        return result, f"{elapsed_time:.6f}"
+        return f"{result}, {elapsed_time:.6f}"
 
     # Built-in Factorial with Timing
     def factorial_builtin(self, n):
@@ -58,7 +58,7 @@ class Interview:
         elapsed_time = end_time - start_time
 
         # Print complexity and runtime
-        return result, elapsed_time
+        return f"{result}, {elapsed_time:.6f}"
 
     # Recursion: Fibonacci
     def fibonacci_recursive(self, n):
