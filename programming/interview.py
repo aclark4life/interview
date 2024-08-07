@@ -221,11 +221,12 @@ class Sort:
         return arr
 
 
-class Interview(DataStructure, Factorial, Fibonacci, Search, Sort):
+class List:
     """
-    Programming Interview Questions
-    """
+    Linked List Algorithms for Programming Interview Questions
+    """ 
 
+    # Insert into Linked List
     def insert_linked_list(self, head, value):
         new_node = self.ListNode(value)
         if not head:
@@ -236,6 +237,7 @@ class Interview(DataStructure, Factorial, Fibonacci, Search, Sort):
         current.next = new_node
         return head
 
+    # Print Linked List
     def print_linked_list(self, head):
         current = head
         while current:
@@ -243,6 +245,13 @@ class Interview(DataStructure, Factorial, Fibonacci, Search, Sort):
             current = current.next
         print("None")
 
+
+class Traversal:
+    """
+    Tree Traversal Algorithms for Programming Interview Questions
+    """
+
+    # Tree Traversal: Inorder, Preorder, Postorder
     def inorder_traversal(self, root):
         return (
             self.inorder_traversal(root.left)
@@ -252,6 +261,7 @@ class Interview(DataStructure, Factorial, Fibonacci, Search, Sort):
             else []
         )
 
+    # Tree Traversal: Preorder
     def preorder_traversal(self, root):
         return (
             [root.value]
@@ -261,6 +271,7 @@ class Interview(DataStructure, Factorial, Fibonacci, Search, Sort):
             else []
         )
 
+    # Tree Traversal: Postorder
     def postorder_traversal(self, root):
         return (
             self.postorder_traversal(root.left)
@@ -269,6 +280,12 @@ class Interview(DataStructure, Factorial, Fibonacci, Search, Sort):
             if root
             else []
         )
+
+
+class Graph:
+    """
+    Graph Algorithms for Programming Interview Questions
+    """
 
     # Graph Algorithms: Depth-First Search
     def dfs(self, graph, start):
@@ -289,6 +306,12 @@ class Interview(DataStructure, Factorial, Fibonacci, Search, Sort):
                 visited.add(vertex)
                 queue.extend(set(graph[vertex]) - visited)
         return visited
+
+
+class Interview(DataStructure, Factorial, Fibonacci, Search, Sort, List, Traversal, Graph):
+    """
+    Programming Interview Questions
+    """
 
 
 def setup_readline(local):
