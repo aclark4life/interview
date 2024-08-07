@@ -14,6 +14,7 @@ import rlcompleter  # noqa
 
 locale.setlocale(locale.LC_ALL, "en_US.UTF-8")
 
+
 class DataStructure:
     # Data Structure: Binary Tree
     class TreeNode:
@@ -73,7 +74,6 @@ class DataStructure:
 
 
 class Interview(DataStructure):
-
     # Protected methods for factorial calculation
     def _factorial_recursive(self, n):
         if n == 0:
@@ -282,14 +282,22 @@ def main():
 
     parser = argparse.ArgumentParser(description="Programming Interview Questions")
 
-    parser.add_argument("-f", "--factorial", type=int, help="Factorial algorithm examples")
+    parser.add_argument(
+        "-f", "--factorial", type=int, help="Factorial algorithm examples"
+    )
     parser.add_argument("--fibonacci", type=int, help="Fibonacci algorithm examples")
-    parser.add_argument("--search", action="store_true", help="Search algorithm examples")
+    parser.add_argument(
+        "--search", action="store_true", help="Search algorithm examples"
+    )
     parser.add_argument("--sort", action="store_true", help="Search algorithm examples")
     parser.add_argument("--stack", action="store_true", help="Stack algorithm examples")
     parser.add_argument("--queue", action="store_true", help="Queue algorithm examples")
-    parser.add_argument("--list", action="store_true", help="Linked List algorithm examples")
-    parser.add_argument("--tree", action="store_true", help="Tree traversal algorithm examples")
+    parser.add_argument(
+        "--list", action="store_true", help="Linked List algorithm examples"
+    )
+    parser.add_argument(
+        "--tree", action="store_true", help="Tree traversal algorithm examples"
+    )
     parser.add_argument("--graph", action="store_true", help="Graph algorithm examples")
     parser.add_argument(
         "-i", "--interactive", action="store_true", help="Interactive mode"
@@ -409,8 +417,12 @@ def main():
         root.left.left = interview.TreeNode(4)
         root.left.right = interview.TreeNode(5)
         rprint(Panel(str(interview.inorder_traversal(root)), title="Inorder Traversal"))
-        rprint(Panel(str(interview.preorder_traversal(root)), title="Preorder Traversal"))
-        rprint(Panel(str(interview.postorder_traversal(root)), title="Postorder Traversal"))
+        rprint(
+            Panel(str(interview.preorder_traversal(root)), title="Preorder Traversal")
+        )
+        rprint(
+            Panel(str(interview.postorder_traversal(root)), title="Postorder Traversal")
+        )
 
     if args.graph:
         # Graph Algorithms example
@@ -431,7 +443,9 @@ def main():
         setup_readline(locals())
         banner = "Interactive programming interview session started. Type 'exit()' or 'Ctrl-D' to exit."
         code.interact(
-            banner=banner, local=locals(), exitmsg="You may or may not have gotten the job!"
+            banner=banner,
+            local=locals(),
+            exitmsg="You may or may not have gotten the job!",
         )
 
 

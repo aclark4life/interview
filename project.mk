@@ -1,5 +1,8 @@
 PROJECT_NAME := interview
 
+e:
+	$(EDITOR) programming/interview.py
+
 interview:
 	@python programming/interview.py -f 5
 	@python programming/interview.py --fibonacci 7
