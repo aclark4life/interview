@@ -1,11 +1,11 @@
 from rich import print as rprint
 from rich.console import Console
 from rich.panel import Panel
-from rich.text import Text
 
 import argparse
 import math
 import time
+
 
 class Interview:
     # Data Structures: Binary Tree
@@ -63,6 +63,7 @@ class Interview:
         def __init__(self, value=0, next=None):
             self.value = value
             self.next = next
+
     def __init__(self):
         pass
 
@@ -265,8 +266,8 @@ def main():
     interview = Interview()
 
     parser = argparse.ArgumentParser(description="A simple argument parser example.")
-    parser.add_argument('--name', type=str, help='Your name')
-    parser.add_argument('--age', type=int, help='Your age')
+    parser.add_argument("--name", type=str, help="Your name")
+    parser.add_argument("--age", type=int, help="Your age")
 
     args = parser.parse_args()
 
@@ -274,10 +275,34 @@ def main():
 
     # Factorial examples
     console.rule("Factorial Examples")
-    rprint(Panel("[bold cyan]Recursive Factorial - Time Complexity: O(n)[/bold cyan]\n" + str(interview.factorial_recursive(5)), title="Factorial Recursive"))
-    rprint(Panel("[bold cyan]Iterative Factorial - Time Complexity: O(n)[/bold cyan]\n" + str(interview.factorial_iterative(5)), title="Factorial Iterative"))
-    rprint(Panel("[bold cyan]Built-in Factorial - Time Complexity: O(n)[/bold cyan]\n" + str(interview.factorial_builtin(5)), title="Factorial Built-in"))
-    rprint(Panel("[bold cyan]Divide and Conquer Factorial - Time Complexity: O(n log n)[/bold cyan]\n" + str(interview.factorial_divide_and_conquer(5)), title="Factorial Divide and Conquer"))
+    rprint(
+        Panel(
+            "[bold cyan]Recursive Factorial - Time Complexity: O(n)[/bold cyan]\n"
+            + str(interview.factorial_recursive(5)),
+            title="Factorial Recursive",
+        )
+    )
+    rprint(
+        Panel(
+            "[bold cyan]Iterative Factorial - Time Complexity: O(n)[/bold cyan]\n"
+            + str(interview.factorial_iterative(5)),
+            title="Factorial Iterative",
+        )
+    )
+    rprint(
+        Panel(
+            "[bold cyan]Built-in Factorial - Time Complexity: O(n)[/bold cyan]\n"
+            + str(interview.factorial_builtin(5)),
+            title="Factorial Built-in",
+        )
+    )
+    rprint(
+        Panel(
+            "[bold cyan]Divide and Conquer Factorial - Time Complexity: O(n log n)[/bold cyan]\n"
+            + str(interview.factorial_divide_and_conquer(5)),
+            title="Factorial Divide and Conquer",
+        )
+    )
 
     # Fibonacci examples
     console.rule("Fibonacci Examples")
@@ -293,7 +318,9 @@ def main():
     # Sorting examples
     console.rule("Sorting Examples")
     unsorted_array = [64, 34, 25, 12, 22, 11, 90]
-    rprint(Panel(str(interview.bubble_sort(unsorted_array.copy())), title="Bubble Sort"))
+    rprint(
+        Panel(str(interview.bubble_sort(unsorted_array.copy())), title="Bubble Sort")
+    )
     rprint(Panel(str(interview.merge_sort(unsorted_array.copy())), title="Merge Sort"))
 
     # Stack example
@@ -348,6 +375,7 @@ def main():
     rprint(Panel(str(interview.dfs(graph, "A")), title="DFS"))
     rprint(Panel(str(interview.bfs(graph, "A")), title="BFS"))
     # code.interact(local=locals())
+
 
 if __name__ == "__main__":
     main()
