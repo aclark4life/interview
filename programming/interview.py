@@ -16,6 +16,10 @@ locale.setlocale(locale.LC_ALL, "en_US.UTF-8")
 
 
 class DataStructure:
+    """
+    Data Structures for Programming Interview Questions
+    """
+
     # Data Structure: Binary Tree
     class TreeNode:
         def __init__(self, value=0, left=None, right=None):
@@ -73,7 +77,11 @@ class DataStructure:
             self.next = next
 
 
-class Interview(DataStructure):
+class Factorial:
+    """
+    Factorial Algorithms for Programming Interview Questions
+    """
+
     # Protected methods for factorial calculation
     def _factorial_recursive(self, n):
         if n == 0:
@@ -127,6 +135,12 @@ class Interview(DataStructure):
 
         # Print complexity and runtime
         return f"  Factorial: {locale.format_string("%.2f", result, grouping=True)}  Elapsed time: {elapsed_time:.6f}"
+
+
+class Interview(DataStructure, Factorial):
+    """
+    Programming Interview Questions
+    """
 
     # Recursion: Fibonacci
     def fibonacci_recursive(self, n):
