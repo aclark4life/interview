@@ -137,10 +137,7 @@ class Factorial:
         return f"  Factorial: {locale.format_string("%.2f", result, grouping=True)}  Elapsed time: {elapsed_time:.6f}"
 
 
-class Interview(DataStructure, Factorial):
-    """
-    Programming Interview Questions
-    """
+class Fibonacci:
 
     # Recursion: Fibonacci
     def fibonacci_recursive(self, n):
@@ -156,6 +153,12 @@ class Interview(DataStructure, Factorial):
         for _ in range(n - 1):
             a, b = b, a + b
         return b
+
+
+class Interview(DataStructure, Factorial, Fibonacci):
+    """
+    Programming Interview Questions
+    """
 
     # Searching: Linear Search
     def linear_search(self, arr, target):
