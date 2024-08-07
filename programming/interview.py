@@ -445,7 +445,7 @@ def main():
         code.interact(
             banner=banner,
             local=locals(),
-            exitmsg="You may or may not have gotten the job!",
+            exitmsg="You maybe or not got the job!",
         )
 
 
