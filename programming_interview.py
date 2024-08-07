@@ -3,9 +3,7 @@ from rich.console import Console
 from rich.panel import Panel
 
 import argparse
-import code
 import math
-import rlcompleter
 import time
 
 
@@ -376,6 +374,7 @@ def main():
     }
     rprint(Panel(str(interview.dfs(graph, "A")), title="DFS"))
     rprint(Panel(str(interview.bfs(graph, "A")), title="BFS"))
+
 
 if __name__ == "__main__":
     main()
