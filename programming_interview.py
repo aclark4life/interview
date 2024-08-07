@@ -1,10 +1,8 @@
 from rich import print as rprint
 from rich.console import Console
 
-import code
 import math
 import time
-import rlcompleter
 
 
 class Interview:
@@ -22,8 +20,9 @@ class Interview:
         if low == high:
             return low
         mid = (low + high) // 2
-        return (self._factorial_divide_and_conquer(low, mid) *
-                self._factorial_divide_and_conquer(mid + 1, high))
+        return self._factorial_divide_and_conquer(
+            low, mid
+        ) * self._factorial_divide_and_conquer(mid + 1, high)
 
     # Recursive Factorial with Timing
     def factorial_recursive(self, n):
@@ -271,7 +270,9 @@ rprint("[bold cyan]Iterative Factorial - Time Complexity: O(n)[/bold cyan]")
 rprint(interview.factorial_iterative(5))  # Output: 120
 rprint("[bold cyan]Built-in Factorial - Time Complexity: O(n)[/bold cyan]")
 rprint(interview.factorial_builtin(5))  # Output: 120
-rprint("[bold cyan]Divide and Conquer Factorial - Time Complexity: O(n log n)[/bold cyan]")
+rprint(
+    "[bold cyan]Divide and Conquer Factorial - Time Complexity: O(n log n)[/bold cyan]"
+)
 rprint(interview.factorial_divide_and_conquer(5))  # Output: 120
 
 # Fibonacci examples
@@ -288,8 +289,12 @@ rprint(interview.binary_search(array, 5))  # Output: 2
 # Sorting examples
 console.rule("Sorting Examples")
 unsorted_array = [64, 34, 25, 12, 22, 11, 90]
-rprint(interview.bubble_sort(unsorted_array.copy()))  # Output: [11, 12, 22, 25, 34, 64, 90]
-rprint(interview.merge_sort(unsorted_array.copy()))  # Output: [11, 12, 22, 25, 34, 64, 90]
+rprint(
+    interview.bubble_sort(unsorted_array.copy())
+)  # Output: [11, 12, 22, 25, 34, 64, 90]
+rprint(
+    interview.merge_sort(unsorted_array.copy())
+)  # Output: [11, 12, 22, 25, 34, 64, 90]
 
 # Stack example
 console.rule("Stack Example")
