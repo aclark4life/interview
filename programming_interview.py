@@ -165,13 +165,31 @@ class Interview:
             self.right = right
 
     def inorder_traversal(self, root):
-        return self.inorder_traversal(root.left) + [root.value] + self.inorder_traversal(root.right) if root else []
+        return (
+            self.inorder_traversal(root.left)
+            + [root.value]
+            + self.inorder_traversal(root.right)
+            if root
+            else []
+        )
 
     def preorder_traversal(self, root):
-        return [root.value] + self.preorder_traversal(root.left) + self.preorder_traversal(root.right) if root else []
+        return (
+            [root.value]
+            + self.preorder_traversal(root.left)
+            + self.preorder_traversal(root.right)
+            if root
+            else []
+        )
 
     def postorder_traversal(self, root):
-        return self.postorder_traversal(root.left) + self.postorder_traversal(root.right) + [root.value] if root else []
+        return (
+            self.postorder_traversal(root.left)
+            + self.postorder_traversal(root.right)
+            + [root.value]
+            if root
+            else []
+        )
 
     # Graph Algorithms: Depth-First Search
     def dfs(self, graph, start):
@@ -193,6 +211,7 @@ class Interview:
                 queue.extend(set(graph[vertex]) - visited)
         return visited
 
+
 # Example usage
 interview = Interview()
 
@@ -211,8 +230,12 @@ print(interview.binary_search(array, 5))  # Output: 2
 
 # Sorting examples
 unsorted_array = [64, 34, 25, 12, 22, 11, 90]
-print(interview.bubble_sort(unsorted_array.copy()))  # Output: [11, 12, 22, 25, 34, 64, 90]
-print(interview.merge_sort(unsorted_array.copy()))   # Output: [11, 12, 22, 25, 34, 64, 90]
+print(
+    interview.bubble_sort(unsorted_array.copy())
+)  # Output: [11, 12, 22, 25, 34, 64, 90]
+print(
+    interview.merge_sort(unsorted_array.copy())
+)  # Output: [11, 12, 22, 25, 34, 64, 90]
 
 # Stack example
 stack = interview.Stack()
@@ -220,8 +243,8 @@ stack.push(1)
 stack.push(2)
 stack.push(3)
 print(stack.pop())  # Output: 3
-print(stack.peek()) # Output: 2
-print(stack.size()) # Output: 2
+print(stack.peek())  # Output: 2
+print(stack.size())  # Output: 2
 
 # Queue example
 queue = interview.Queue()
@@ -229,8 +252,8 @@ queue.enqueue(1)
 queue.enqueue(2)
 queue.enqueue(3)
 print(queue.dequeue())  # Output: 1
-print(queue.is_empty()) # Output: False
-print(queue.size())     # Output: 2
+print(queue.is_empty())  # Output: False
+print(queue.size())  # Output: 2
 
 # Linked List example
 head = None
@@ -246,17 +269,17 @@ root.right = interview.TreeNode(3)
 root.left.left = interview.TreeNode(4)
 root.left.right = interview.TreeNode(5)
 print(interview.inorder_traversal(root))  # Output: [4, 2, 5, 1, 3]
-print(interview.preorder_traversal(root)) # Output: [1, 2, 4, 5, 3]
-print(interview.postorder_traversal(root)) # Output: [4, 5, 2, 3, 1]
+print(interview.preorder_traversal(root))  # Output: [1, 2, 4, 5, 3]
+print(interview.postorder_traversal(root))  # Output: [4, 5, 2, 3, 1]
 
 # Graph Algorithms example
 graph = {
-    'A': ['B', 'C'],
-    'B': ['A', 'D', 'E'],
-    'C': ['A', 'F'],
-    'D': ['B'],
-    'E': ['B', 'F'],
-    'F': ['C', 'E']
+    "A": ["B", "C"],
+    "B": ["A", "D", "E"],
+    "C": ["A", "F"],
+    "D": ["B"],
+    "E": ["B", "F"],
+    "F": ["C", "E"],
 }
-print(interview.dfs(graph, 'A'))  # Output: {'E', 'D', 'A', 'C', 'B', 'F'}
-print(interview.bfs(graph, 'A'))  # Output: {'A', 'B', 'C', 'D', 'E', 'F'}
+print(interview.dfs(graph, "A"))  # Output: {'E', 'D', 'A', 'C', 'B', 'F'}
+print(interview.bfs(graph, "A"))  # Output: {'A', 'B', 'C', 'D', 'E', 'F'}
