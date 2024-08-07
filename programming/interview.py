@@ -14,9 +14,8 @@ import rlcompleter  # noqa
 
 locale.setlocale(locale.LC_ALL, "en_US.UTF-8")
 
-
-class Interview:
-    # Data Structures: Binary Tree
+class DataStructure:
+    # Data Structure: Binary Tree
     class TreeNode:
         def __init__(self, value=0, left=None, right=None):
             self.value = value
@@ -71,6 +70,9 @@ class Interview:
         def __init__(self, value=0, next=None):
             self.value = value
             self.next = next
+
+
+class Interview(DataStructure):
 
     # Protected methods for factorial calculation
     def _factorial_recursive(self, n):
