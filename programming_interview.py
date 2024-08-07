@@ -1,3 +1,7 @@
+import code
+import rlcompleter
+
+
 class Interview:
     def __init__(self):
         pass
@@ -29,6 +33,20 @@ class Interview:
         if n <= 1:
             return n
         return self.fibonacci_recursive(n - 1) + self.fibonacci_recursive(n - 2)
+
+    # Divide and Conquer: Factorial
+    def factorial_divide_and_conquer(self, n):
+        if n == 0 or n == 1:
+            return 1
+        return self.factorial_divide_and_conquer_helper(1, n)
+    
+    def factorial_divide_and_conquer_helper(self, low, high):
+        if low > high:
+            return 1
+        if low == high:
+            return low
+        mid = (low + high) // 2
+        return self.factorial_divide_and_conquer_helper(low, mid) * self.factorial_divide_and_conquer_helper(mid + 1, high)
 
     # Iteration: Fibonacci
     def fibonacci_iterative(self, n):
@@ -228,6 +246,7 @@ interview = Interview()
 print(interview.factorial_recursive(5))  # Output: 120
 print(interview.factorial_iterative(5))  # Output: 120
 print(interview.factorial_builtin(5))  # Output: 120
+print(interview.factorial_divide_and_conquer(5))  # Output: 120
 
 # Fibonacci examples
 print(interview.fibonacci_recursive(7))  # Output: 13
@@ -293,3 +312,4 @@ graph = {
 }
 print(interview.dfs(graph, "A"))  # Output: {'E', 'D', 'A', 'C', 'B', 'F'}
 print(interview.bfs(graph, "A"))  # Output: {'A', 'B', 'C', 'D', 'E', 'F'}
+code.interact(local=locals())
