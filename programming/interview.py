@@ -1,3 +1,4 @@
+from PIL import Image, ImageDraw, ImageFont
 from rich import print as rprint
 from rich.console import Console
 from rich.panel import Panel
@@ -28,6 +29,15 @@ class BigONotationPlotter:
             "O(n^3)": self.cubic,
             "O(2^n)": self.exponential,
         }
+        self.colors = {
+            "O(1)": "red",
+            "O(log n)": "green",
+            "O(n)": "blue",
+            "O(n log n)": "orange",
+            "O(n^2)": "purple",
+            "O(n^3)": "brown",
+            "O(2^n)": "black",
+        }
 
     def constant(self, n):
         return 1
@@ -50,7 +60,7 @@ class BigONotationPlotter:
     def exponential(self, n):
         return 2**n
 
-    def generate_data_points(self, n_values):
+    def generate_data_points_for_rich(self, n_values):
         table = Table(title="Big O Notations")
 
         # Add columns
@@ -70,9 +80,58 @@ class BigONotationPlotter:
 
         return table
 
-    def plot(self, n_values):
-        table = self.generate_data_points(n_values)
+    def generate_data_points_for_pillow(self, n_values):
+        data_points = {}
+        for label, func in self.functions.items():
+            data_points[label] = [func(n) for n in n_values]
+        return data_points
+
+    def plot_rich(self, n_values):
+        table = self.generate_data_points_for_rich(n_values)
         self.console.print(table)
+
+    def plot_pillow(
+        self, n_values, width=800, height=600, output_file="big_o_notations.png"
+    ):
+        data_points = self.generate_data_points_for_pillow(n_values)
+        max_n = max(n_values)
+        max_y = max(max(points) for points in data_points.values())
+
+        # Create an image with white background
+        image = Image.new("RGB", (width, height), "white")
+        draw = ImageDraw.Draw(image)
+
+        # Draw axes
+        margin = 50
+        draw.line(
+            (margin, height - margin, width - margin, height - margin), fill="black"
+        )
+        draw.line((margin, height - margin, margin, margin), fill="black")
+
+        # Draw labels
+        font = ImageFont.load_default()
+        draw.text((width // 2, height - margin + 10), "n", fill="black", font=font)
+        draw.text((10, height // 2), "f(n)", fill="black", font=font)
+
+        # Plot each function
+        for label, points in data_points.items():
+            color = self.colors[label]
+            for i in range(len(n_values) - 1):
+                x1 = margin + (n_values[i] / max_n) * (width - 2 * margin)
+                y1 = height - margin - (points[i] / max_y) * (height - 2 * margin)
+                x2 = margin + (n_values[i + 1] / max_n) * (width - 2 * margin)
+                y2 = height - margin - (points[i + 1] / max_y) * (height - 2 * margin)
+                draw.line((x1, y1, x2, y2), fill=color, width=2)
+
+        # Add legend
+        legend_x = width - margin - 150
+        legend_y = margin
+        for label, color in self.colors.items():
+            draw.text((legend_x, legend_y), label, fill=color, font=font)
+            legend_y += 15
+
+        # Save the image
+        image.save(output_file)
 
 
 class DataStructure:
@@ -453,7 +512,8 @@ def main():
     if args.big_o:
         plotter = BigONotationPlotter()
         n_values = list(range(1, args.big_o + 1))
-        print(plotter.plot(n_values))
+        plotter.plot_pillow(n_values)
+        print(plotter.plot_rich(n_values))
 
     if args.factorial:
         # Factorial examples
