@@ -472,13 +472,6 @@ class Interview(
     """
 
 
-def setup_readline(local):
-    # Enable tab completion
-    readline.parse_and_bind("tab: complete")
-    # Optionally, you can set the completer function manually
-    readline.set_completer(rlcompleter.Completer(local).complete)
-
-
 def main():
     console = Console()
     interview = Interview()
@@ -650,7 +643,8 @@ def main():
 
     if args.interactive:
         # Starting interactive session with tab completion
-        setup_readline(locals())
+        readline.parse_and_bind("tab: complete")
+        readline.set_completer(rlcompleter.Completer(locals()).complete)
         banner = "Interactive programming interview session started. Type 'exit()' or 'Ctrl-D' to exit."
         code.interact(
             banner=banner,
