@@ -201,30 +201,6 @@ class Factorial:
     Factorial Algorithms for Programming Interview Questions
     """
 
-    # Protected methods for factorial calculation
-    def _factorial_recursive(self, n):
-        if n == 0:
-            return 1
-        return n * self._factorial_recursive(n - 1)
-
-    def _factorial_divide_and_conquer(self, low, high):
-        if low > high:
-            return 1
-        if low == high:
-            return low
-        mid = (low + high) // 2
-        return self._factorial_divide_and_conquer(
-            low, mid
-        ) * self._factorial_divide_and_conquer(mid + 1, high)
-
-    # Recursive Factorial with Timing
-    def factorial_recursive(self, n):
-        start_time = time.time()  # Start timing
-        result = self._factorial_recursive(n)  # Calculate factorial
-        end_time = time.time()  # End timing
-        elapsed_time = end_time - start_time
-        return f"  Factorial: {locale.format_string("%.2f", result, grouping=True)}\n  Elapsed time: {elapsed_time:.6f}"
-
     # Iterative Factorial with Timing
     def factorial_iterative(self, n):
         start_time = time.time()  # Start timing
@@ -235,10 +211,16 @@ class Factorial:
         elapsed_time = end_time - start_time
         return f"  Factorial: {locale.format_string("%.2f", result, grouping=True)}\n  Elapsed time: {elapsed_time:.6f}"
 
-    # Divide and Conquer Factorial with Timing
-    def factorial_divide_and_conquer(self, n):
+    # Protected method for recursive factorial calculation
+    def _factorial_recursive(self, n):
+        if n == 0:
+            return 1
+        return n * self._factorial_recursive(n - 1)
+
+    # Recursive Factorial with Timing
+    def factorial_recursive(self, n):
         start_time = time.time()  # Start timing
-        result = self._factorial_divide_and_conquer(1, n)  # Calculate factorial
+        result = self._factorial_recursive(n)  # Calculate factorial
         end_time = time.time()  # End timing
         elapsed_time = end_time - start_time
         return f"  Factorial: {locale.format_string("%.2f", result, grouping=True)}\n  Elapsed time: {elapsed_time:.6f}"
@@ -253,6 +235,25 @@ class Factorial:
         elapsed_time = end_time - start_time
 
         # Print complexity and runtime
+        return f"  Factorial: {locale.format_string("%.2f", result, grouping=True)}\n  Elapsed time: {elapsed_time:.6f}"
+
+    # Protected method for recursive factorial calculation
+    def _factorial_recursive_divide_and_conquer(self, low, high):
+        if low > high:
+            return 1
+        if low == high:
+            return low
+        mid = (low + high) // 2
+        return self._factorial_recursive_divide_and_conquer(
+            low, mid
+        ) * self._factorial_recursive_divide_and_conquer(mid + 1, high)
+
+    # Divide and Conquer Factorial with Timing
+    def factorial_recursive_divide_and_conquer(self, n):
+        start_time = time.time()  # Start timing
+        result = self._factorial_recursive_divide_and_conquer(1, n)
+        end_time = time.time()  # End timing
+        elapsed_time = end_time - start_time
         return f"  Factorial: {locale.format_string("%.2f", result, grouping=True)}\n  Elapsed time: {elapsed_time:.6f}"
 
 
@@ -535,7 +536,7 @@ def main():
         rprint(
             Panel(
                 "[bold cyan]Divide and Conquer Factorial - Time Complexity: O(n log n)[/bold cyan]\n"
-                + str(interview.factorial_divide_and_conquer(args.factorial)),
+                + str(interview.factorial_recursive_divide_and_conquer(args.factorial)),
                 title="Factorial Divide and Conquer",
             )
         )
