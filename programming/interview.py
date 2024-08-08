@@ -104,7 +104,7 @@ class Factorial:
         result = self._factorial_recursive(n)  # Calculate factorial
         end_time = time.time()  # End timing
         elapsed_time = end_time - start_time
-        return f"  Factorial: {locale.format_string("%.2f", result, grouping=True)}  Elapsed time: {elapsed_time:.6f}"
+        return f"  Factorial: {locale.format_string("%.2f", result, grouping=True)}\n  Elapsed time: {elapsed_time:.6f}"
 
     # Iterative Factorial with Timing
     def factorial_iterative(self, n):
@@ -114,7 +114,7 @@ class Factorial:
             result *= i
         end_time = time.time()  # End timing
         elapsed_time = end_time - start_time
-        return f"  Factorial: {locale.format_string("%.2f", result, grouping=True)}  Elapsed time: {elapsed_time:.6f}"
+        return f"  Factorial: {locale.format_string("%.2f", result, grouping=True)}\n  Elapsed time: {elapsed_time:.6f}"
 
     # Divide and Conquer Factorial with Timing
     def factorial_divide_and_conquer(self, n):
@@ -122,7 +122,7 @@ class Factorial:
         result = self._factorial_divide_and_conquer(1, n)  # Calculate factorial
         end_time = time.time()  # End timing
         elapsed_time = end_time - start_time
-        return f"  Factorial: {locale.format_string("%.2f", result, grouping=True)}  Elapsed time: {elapsed_time:.6f}"
+        return f"  Factorial: {locale.format_string("%.2f", result, grouping=True)}\n  Elapsed time: {elapsed_time:.6f}"
 
     # Built-in Factorial with Timing
     def factorial_builtin(self, n):
@@ -134,7 +134,7 @@ class Factorial:
         elapsed_time = end_time - start_time
 
         # Print complexity and runtime
-        return f"  Factorial: {locale.format_string("%.2f", result, grouping=True)}  Elapsed time: {elapsed_time:.6f}"
+        return f"  Factorial: {locale.format_string("%.2f", result, grouping=True)}\n  Elapsed time: {elapsed_time:.6f}"
 
 
 class Fibonacci:
