@@ -12,6 +12,7 @@ interview:
 	@python programming/interview.py --list
 	@python programming/interview.py --tree
 	@python programming/interview.py --graph
+	@python programming/interview.py -o 10
 
 
 i:

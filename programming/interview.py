@@ -1,6 +1,7 @@
 from rich import print as rprint
 from rich.console import Console
 from rich.panel import Panel
+from rich.table import Table
 
 import argparse
 import locale
@@ -13,6 +14,65 @@ import rlcompleter  # noqa
 
 
 locale.setlocale(locale.LC_ALL, "en_US.UTF-8")
+
+
+class BigONotationPlotter:
+    def __init__(self):
+        self.console = Console()
+        self.functions = {
+            "O(1)": self.constant,
+            "O(log n)": self.logarithmic,
+            "O(n)": self.linear,
+            "O(n log n)": self.linearithmic,
+            "O(n^2)": self.quadratic,
+            "O(n^3)": self.cubic,
+            "O(2^n)": self.exponential,
+        }
+
+    def constant(self, n):
+        return 1
+
+    def logarithmic(self, n):
+        return math.log(n)
+
+    def linear(self, n):
+        return n
+
+    def linearithmic(self, n):
+        return n * math.log(n)
+
+    def quadratic(self, n):
+        return n**2
+
+    def cubic(self, n):
+        return n**3
+
+    def exponential(self, n):
+        return 2**n
+
+    def generate_data_points(self, n_values):
+        table = Table(title="Big O Notations")
+
+        # Add columns
+        table.add_column("n", justify="right", style="cyan", no_wrap=True)
+        for label in self.functions.keys():
+            table.add_column(label, justify="right", style="magenta")
+
+        # Add rows
+        for n in n_values:
+            row = [str(n)]
+            for func in self.functions.values():
+                try:
+                    row.append(f"{func(n):.2f}")
+                except OverflowError:
+                    row.append("∞")
+            table.add_row(*row)
+
+        return table
+
+    def plot(self, n_values):
+        table = self.generate_data_points(n_values)
+        self.console.print(table)
 
 
 class DataStructure:
@@ -325,13 +385,13 @@ class Graph:
         visited = set()
         # Initialize the queue with the start node
         queue = [start]
-        
+
         # Continue the loop as long as there are nodes in the queue
         while queue:
             # Dequeue the first node from the queue
             vertex = queue.pop(0)
             print(f"Vertex: {vertex}")
-            
+
             # If the node has not been visited
             if vertex not in visited:
                 # Mark the node as visited
@@ -340,7 +400,7 @@ class Graph:
                 # Add all unvisited neighbors of the current node to the queue
                 print(f"Unvisited: {set(graph[vertex]) - visited}")
                 queue.extend(set(graph[vertex]) - visited)
-    
+
         # Return the set of visited nodes after BFS traversal is complete
         return visited
 
@@ -383,11 +443,17 @@ def main():
         "--tree", action="store_true", help="Tree traversal algorithm examples"
     )
     parser.add_argument("--graph", action="store_true", help="Graph algorithm examples")
+    parser.add_argument("-o", "--big-o", type=int, help="Big O Notation plotter")
     parser.add_argument(
         "-i", "--interactive", action="store_true", help="Interactive mode"
     )
 
     args = parser.parse_args()
+
+    if args.big_o:
+        plotter = BigONotationPlotter()
+        n_values = list(range(1, args.big_o + 1))
+        print(plotter.plot(n_values))
 
     if args.factorial:
         # Factorial examples
