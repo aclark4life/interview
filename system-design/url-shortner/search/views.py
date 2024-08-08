@@ -3,9 +3,10 @@ from django.db.models import Q
 from .forms import SearchForm
 from .utils import get_search_models
 
+
 class SearchView(ListView):
-    template_name = 'your_app/search_results.html'
-    context_object_name = 'results'
+    template_name = "your_app/search_results.html"
+    context_object_name = "results"
     paginate_by = 10
 
     def get_queryset(self):
@@ -14,11 +15,15 @@ class SearchView(ListView):
         results = []
 
         if form.is_valid():
-            query = form.cleaned_data['query']
+            query = form.cleaned_data["query"]
             search_models = get_search_models()
 
             for model in search_models:
-                fields = [f.name for f in model._meta.fields if isinstance(f, (models.CharField, models.TextField))]
+                fields = [
+                    f.name
+                    for f in model._meta.fields
+                    if isinstance(f, (models.CharField, models.TextField))
+                ]
                 queries = [Q(**{f"{field}__icontains": query}) for field in fields]
                 model_results = model.objects.filter(queries.pop())
 
@@ -31,6 +36,6 @@ class SearchView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = SearchForm(self.request.GET)
-        context['query'] = self.request.GET.get('query', '')
+        context["form"] = SearchForm(self.request.GET)
+        context["query"] = self.request.GET.get("query", "")
         return context

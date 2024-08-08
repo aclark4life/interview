@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "url_shortener",
 ]
 
 MIDDLEWARE = [
@@ -122,12 +123,13 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 import os
+
 STATICFILES_DIRS = []
 THEMES = [
-    ('light', 'Light Theme'),
-    ('dark', 'Dark Theme'),
+    ("light", "Light Theme"),
+    ("dark", "Dark Theme"),
 ]
-INSTALLED_APPS.append('home')
+INSTALLED_APPS.append("home")
 SEARCH_MODELS = [
     # 'app_name.Article',
     # 'app_name.BlogPost',
@@ -135,47 +137,50 @@ SEARCH_MODELS = [
     # Add other models as needed
 ]
 # project-makefile
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 import dj_database_url  # noqa
-DATABASE_URL = os.environ.get('DATABASE_URL', 'postgres://:@:/project-makefile')
-DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
-INSTALLED_APPS.append('webpack_boilerplate')
-INSTALLED_APPS.append('rest_framework')
-INSTALLED_APPS.append('rest_framework.authtoken')
-INSTALLED_APPS.append('allauth')
-INSTALLED_APPS.append('allauth.account')
-INSTALLED_APPS.append('allauth.socialaccount')
-INSTALLED_APPS.append('django_extensions')
-INSTALLED_APPS.append('crispy_forms')
-INSTALLED_APPS.append('crispy_bootstrap5')
-INSTALLED_APPS.append('django_recaptcha')
+
+DATABASE_URL = os.environ.get("DATABASE_URL", "postgres://:@:/project-makefile")
+DATABASES["default"] = dj_database_url.parse(DATABASE_URL)
+INSTALLED_APPS.append("webpack_boilerplate")
+INSTALLED_APPS.append("rest_framework")
+INSTALLED_APPS.append("rest_framework.authtoken")
+INSTALLED_APPS.append("allauth")
+INSTALLED_APPS.append("allauth.account")
+INSTALLED_APPS.append("allauth.socialaccount")
+INSTALLED_APPS.append("django_extensions")
+INSTALLED_APPS.append("crispy_forms")
+INSTALLED_APPS.append("crispy_bootstrap5")
+INSTALLED_APPS.append("django_recaptcha")
 # INSTALLED_APPS = [app for app in INSTALLED_APPS if app != 'django.contrib.admin']
 # INSTALLED_APPS.append('backend.apps.CustomAdminConfig')
-MIDDLEWARE.append('allauth.account.middleware.AccountMiddleware')
+MIDDLEWARE.append("allauth.account.middleware.AccountMiddleware")
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
-STATICFILES_DIRS.append(os.path.join(BASE_DIR, 'frontend/build'))
-WEBPACK_LOADER = { 'MANIFEST_FILE': os.path.join(BASE_DIR, 'frontend/build/manifest.json'), }
+STATICFILES_DIRS.append(os.path.join(BASE_DIR, "frontend/build"))
+WEBPACK_LOADER = {
+    "MANIFEST_FILE": os.path.join(BASE_DIR, "frontend/build/manifest.json"),
+}
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
     ]
 }
 THEMES = [
-    ('light', 'Light Theme'),
-    ('dark', 'Dark Theme'),
+    ("light", "Light Theme"),
+    ("dark", "Dark Theme"),
 ]
-LOGIN_REDIRECT_URL = '/'
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_REDIRECT_URL = "/"
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
 ]
-SILENCED_SYSTEM_CHECKS = ['django_recaptcha.recaptcha_test_key_error']
-EXPLORER_CONNECTIONS = { 'Default': 'default' }
-EXPLORER_DEFAULT_CONNECTION = 'default'
-TEMPLATES[0]['DIRS'].append(os.path.join(PROJECT_DIR, 'templates'))
-INSTALLED_APPS.append('siteuser')
-AUTH_USER_MODEL = 'siteuser.User'
+SILENCED_SYSTEM_CHECKS = ["django_recaptcha.recaptcha_test_key_error"]
+EXPLORER_CONNECTIONS = {"Default": "default"}
+EXPLORER_DEFAULT_CONNECTION = "default"
+TEMPLATES[0]["DIRS"].append(os.path.join(PROJECT_DIR, "templates"))
+INSTALLED_APPS.append("siteuser")
+AUTH_USER_MODEL = "siteuser.User"
