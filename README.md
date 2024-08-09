@@ -16,3 +16,5 @@
   - Can be used to receive and send DICOM files
 
 - https://github.com/aclark4life/project-makefile
+
+- https://github.com/python-pillow/Pillow
