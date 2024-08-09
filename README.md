@@ -14,3 +14,5 @@
   - Alternative to commercial offerings
   - Built with Python and pynetdicom
   - Can be used to receive and send DICOM files
+
+- https://github.com/aclark4life/project-makefile
